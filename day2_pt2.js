@@ -23,9 +23,9 @@ function checkDiv(spreadSheet) {
     row.forEach(num => {
       for (var i = row.indexOf(num) + 1; i < row.length; i++) {
         if (!pairs.hasOwnProperty(spreadSheet.indexOf(row))) {
-          if ((num / row[i]) % 1 === 0) {
+          if ((num % row[i])  === 0) {
             pairs[spreadSheet.indexOf(row)] = ([num, row[i]]);
-          } else if ((row[i] / num) % 1 === 0) {
+          } else if ((row[i] % num) === 0) {
             pairs[spreadSheet.indexOf(row)] = ([row[i], num]);
           }
         }
@@ -45,6 +45,5 @@ function checkSum(spreadSheet) {
 
   return total;
 }
-
 
 console.log(checkSum(input));
