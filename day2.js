@@ -19,34 +19,26 @@ function checkSum(spreadSheet) {
   var total = 0;
 
   spreadSheet.forEach(row => {
-    total += (findMax(row) - findMin(row));
+    total += extremesDiff(row);
   });
 
   return total;
 }
 
-function findMin(arr) {
+function extremesDiff(arr) {
   var lowest = arr[0];
+  var greatest = arr[0];
 
   arr.forEach(num => {
     if (num < lowest) {
       lowest = num;
     }
-  });
-
-  return lowest;
-}
-
-function findMax(arr) {
-  var greatest = arr[0];
-
-  arr.forEach(num => {
     if (num > greatest) {
       greatest = num;
     }
-  })
+  });
 
-  return greatest;
+  return greatest - lowest;
 }
 
 console.log(checkSum(input));
